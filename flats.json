@@ -1,0 +1,28 @@
+{
+"flat":{
+ "name":"BAN",
+ "coordinates":{
+  "x":123,
+  "y":105,
+ },
+ "area":2003,
+ "numberOfRooms":5,
+ "height":3,
+ "newness":"true",
+ "transport":"NONE",
+ "house":{
+  "name":"Pushkina",
+  "year":2022,
+  "numberOfLifts":4,
+ }
+
+
+
+
+
+}
+
+
+
+
+}
