@@ -2,10 +2,12 @@ package lab5.client.data;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Flat implements Comparable <Flat> {
+    private static Long idGen = Long.valueOf(0);
     private Long id; //поле не может быть null, Значение поля должно быть уникальным, Значение этого поля должно генерироваться автоматически.
     private String name; //Поле не может быть null, Строка не может быть пустой.
     private Coordinates coordinates; //Поле не может быть null.
@@ -17,8 +19,7 @@ public class Flat implements Comparable <Flat> {
     private Transport transport; //Поле не может быть null.
     private House house; //Поле не может быть null.
 
-    public Flat() {
-        this.id = id;
+    public Flat(String name, Coordinates coordinates, LocalDateTime creationDate, Long area, Integer numberOfRooms, Integer height, Boolean newness, Transport transport, House house) {
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = LocalDateTime.now();
@@ -28,8 +29,20 @@ public class Flat implements Comparable <Flat> {
         this.newness = newness;
         this.transport = transport;
         this.house = house;
+        generateId();
     }
-
+    public Flat(String name, Coordinates coordinates, LocalDate creationDate, Long area, Integer numberOfRooms, Integer height, Boolean newness, Transport transport, House house) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = LocalDateTime.now();
+        this.area = area;
+        this.numberOfRooms = numberOfRooms;
+        this.height = height;
+        this.newness = newness;
+        this.transport = transport;
+        this.house = house;
+        generateId();
+    }
     public Long getId() {
         return id;
     }
@@ -114,12 +127,17 @@ public class Flat implements Comparable <Flat> {
         this.house = house;
     }
 
+    public void generateId(){
+        id = idGen;
+        idGen++;
+    }
+
     @Override
     public String toString(){
         String idS = "id = " + id;
-        String nameS = "nameS" + name;
+        String nameS = "name = " + name;
         String coordinateS = "coordinates = " + coordinates.toString();
-        String creationDateS = "creationDate = " + creationDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String creationDateS = "creationDate = " + creationDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String areaS = "area = " + area;
         String numberOfRoomS = "numberOfRoomS = " + numberOfRooms;
         String heightS = "height = " + height;

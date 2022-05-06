@@ -1,0 +1,2 @@
+show
+filter_less_than_newness true
